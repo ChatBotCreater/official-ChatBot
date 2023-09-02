@@ -34,3 +34,22 @@ rules:
     steps:
       - intent: inquire_about_E_grade_study_mode_based_on_marks
       - action: utter_inquire_about_E_grade_study_mode_based_on_marks
+  # new rules
+  - rule: Respond to inquire_about_project_based_course_availability
+    steps:
+      - intent: inquire_about_project_based_course_availability_in_summer_semester
+      - action: utter_inquire_about_project_based_course_availability_in_summer_semester
+
+  - rule: Respond to inquire_about_X_grade_and_F_study_mode
+    steps:
+      - intent: inquire_about_X_grade_and_F_study_mode
+      - action: utter_inquire_about_X_grade_and_F_study_mode
+
+  - rule: Respond to inquire_about_evaluation_pattern_for_summer_semester
+    steps:
+      - intent: inquire_about_evaluation_pattern_for_summer_semester
+      - action: utter_inquire_about_evaluation_pattern_for_summer_semester
+  - rule: Respond to inquire_about_project_courses_and_fees
+    steps:
+      - intent: inquire_about_project_courses_and_fees
+      - action: utter_inquire_about_fees_for_improvement_and_backlog
