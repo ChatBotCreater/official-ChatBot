@@ -1,0 +1,36 @@
+version: "3.1"
+
+rules:
+  - rule: Respond to a greeting
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Respond to a goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Provide details about grade upgrades
+    steps:
+      - intent: inquire_about_grade_upgrade
+      - action: utter_inquire_about_grade_upgrade
+
+  - rule: Provide details about E grade self-study condition
+    steps:
+      - intent: inquire_about_E_grade_self_study_condition
+      - action: utter_E_grade_self_study_condition
+
+  - rule: Provide details about fees for improvement and backlog
+    steps:
+      - intent: inquire_about_fees_for_improvement_and_backlog
+      - action: utter_inquire_about_fees_for_improvement_and_backlog
+
+  - rule: Respond to auxiliary exam grade limit inquiry
+    steps:
+      - intent: inquire_about_auxiliary_exam_grade_limit
+      - action: utter_inquire_about_auxiliary_exam_grade_limit
+  - rule: Respond to inquiry about E grade study mode based on marks
+    steps:
+      - intent: inquire_about_E_grade_study_mode_based_on_marks
+      - action: utter_inquire_about_E_grade_study_mode_based_on_marks

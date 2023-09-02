@@ -1,0 +1,115 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - inquire_about_grade_upgrade
+  - inquire_about_E_grade_self_study_condition
+  - inquire_about_fees_for_improvement_and_backlog
+  - inquire_about_auxiliary_exam_grade_limit
+  - inquire_about_E_grade_study_mode_based_on_marks
+
+entities:
+  - grade
+  - marks_total
+  - marks_cutoff
+  - marks_range
+  - exam:type
+
+slots:
+  grade:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: grade
+
+  marks_total:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: marks_total
+
+  marks_cutoff:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: marks_cutoff
+
+  marks_range:
+    type: list
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: marks_range
+
+  exam:type:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: exam:type
+
+responses:
+  utter_greet:
+    - text: "Hey! How can I assist you today?"
+
+  utter_goodbye:
+    - text: "Goodbye! Feel free to ask if you have more questions."
+
+  utter_inquire_about_grade_upgrade:
+    - text: "Sure! Students with B / B- / C / C- grades are eligible for grade upgrades."
+    - text: "Of course! Grade improvement is available for students with B / B- / C / C- grades."
+    - text: "Certainly! You can opt for grade upgrades if you have B / B- / C / C- grades."
+    - text: "Absolutely! If you have B / B- / C / C- grades, you can improve them through upgrades."
+
+  utter_E_grade_self_study_condition:
+    - text: "Students with an E grade can choose self-study mode if they score 25 marks or more out of 100."
+    - text: "For E grade students, self-study is an option if they achieve a minimum of 25 marks out of 100."
+    - text: "E grade students can select self-study mode if they have 25 marks or higher out of 100."
+    - text: "If you've scored an E grade, you're eligible for self-study if you achieve at least 25 marks out of 100."
+
+  utter_inquire_about_fees_for_improvement_and_backlog:
+    - text: "Certainly! The fees for grade improvement in summer term is Rs. 15,000."
+    - text: "The fees for summer term is Rs. 15,000."
+    - text: "For grade improvement, you'll need to pay Rs. 15,000 if you wish to opt it in summer semester."
+    - text: "Sure thing! The fees for backlog exams vary based on the number of subjects but for the single subject it is around 15,000 for grade improvement and 2000 for auxiliary."
+    - text: "The charges for backlog exams is 15000 and for auxiliary is around 2000"
+
+  utter_inquire_about_auxiliary_exam_grade_limit:
+  - text: "For students with an E grade, the maximum grade achievable in the auxiliary exam is a C grade. They can improve up to a maximum of a C grade in the auxiliary examination."
+
+  utter_inquire_about_E_grade_study_mode_based_on_marks:
+  - text: "For E grade students, if their marks are greater than or equal to 25, they can choose the self-study mode. If their marks are below 25, they must follow the regular study mode."
+
+rules:
+  - rule: Respond to a greeting
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Respond to a goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Provide details about grade upgrades
+    steps:
+      - intent: inquire_about_grade_upgrade
+      - action: utter_inquire_about_grade_upgrade
+
+  - rule: Provide details about E grade self-study condition
+    steps:
+      - intent: inquire_about_E_grade_self_study_condition
+      - action: utter_E_grade_self_study_condition
+
+  - rule: Provide details about fees for improvement and backlog
+    steps:
+      - intent: inquire_about_fees_for_improvement_and_backlog
+      - action: utter_inquire_about_fees_for_improvement_and_backlog
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
