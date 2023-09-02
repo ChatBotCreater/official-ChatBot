@@ -8,13 +8,21 @@ intents:
   - inquire_about_fees_for_improvement_and_backlog
   - inquire_about_auxiliary_exam_grade_limit
   - inquire_about_E_grade_study_mode_based_on_marks
-
+  - inquire_about_X_grade_and_F_study_mode #new intents
+  - inquire_about_project_based_course_availability_in_summer_semester #new intents
+  - inquire_about_evaluation_pattern_for_summer_semester #new intents
+  - inquire_about_project_courses_and_fees #new intents to solve the issue
 entities:
   - grade
   - marks_total
   - marks_cutoff
   - marks_range
   - exam:type
+  - course_name # New entity for course names
+  - semester # New entity for semester terms
+  - study_mode # New entity for study modes (e.g., regular, self-study)
+  - exam_type # New entity for examination types (e.g., MST, EST)
+  - action # New entity for actions (e.g., grade_improvement, grade_upgradation)
 
 slots:
   grade:
@@ -52,6 +60,37 @@ slots:
       - type: from_entity
         entity: exam:type
 
+  course_name: # New slot for course names
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: course_name
+  semester: # New slot for semester terms
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: semester
+  study_mode: # New slot for study modes
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: study_mode
+  exam_type: # New slot for examination types
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: exam_type
+  action: # New slot for actions
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: action
+
 responses:
   utter_greet:
     - text: "Hey! How can I assist you today?"
@@ -79,10 +118,26 @@ responses:
     - text: "The charges for backlog exams is 15000 and for auxiliary is around 2000"
 
   utter_inquire_about_auxiliary_exam_grade_limit:
-  - text: "For students with an E grade, the maximum grade achievable in the auxiliary exam is a C grade. They can improve up to a maximum of a C grade in the auxiliary examination."
+    - text: "For students with an E grade, the maximum grade achievable in the auxiliary exam is a C grade. They can improve up to a maximum of a C grade in the auxiliary examination."
 
   utter_inquire_about_E_grade_study_mode_based_on_marks:
-  - text: "For E grade students, if their marks are greater than or equal to 25, they can choose the self-study mode. If their marks are below 25, they must follow the regular study mode."
+    - text: "For E grade students, if their marks are greater than or equal to 25, they can choose the self-study mode. If their marks are below 25, they must follow the regular study mode."
+  # new responses
+  utter_inquire_about_project_based_course_availability_in_summer_semester:
+    - text: "Project-based courses like Engineering Design-1, Engineering Design-2, Capstone Project, etc., are not offered in self-study mode. They are available only in regular mode."
+    - text: "In the summer semester, project-based courses such as Engineering Design-1 and Capstone Project are usually conducted in regular mode. Self-study mode is not an option for these courses."
+    - text: "For the summer semester, project-based courses like Engineering Design-1 and Capstone Project follow a regular mode of study. Self-study is not applicable to these courses."
+    - text: "Regular mode is the standard mode for project-based courses like Engineering Design-1, Engineering Design-2, and Capstone Project during the summer semester. Self-study mode is not offered."
+
+  utter_inquire_about_X_grade_and_F_study_mode:
+    - text: "In the summer semester, students with X or F grades have the opportunity to improve their grades. However, for those with F grades, the study mode remains will only be in regular mode"
+    - text: "Grade improvement is only available in regular mode for students who receive an X or an F."
+    - text: "Students with grades X or F are only eligible for regular mode for grade improvement in summer semester."
+
+  utter_inquire_about_evaluation_pattern_for_summer_semester:
+    - text: "The evaluation pattern for the summer semester involves components such as Mid-Semester Tests (MST), End-Semester Tests (EST), and Sessional assessments."
+    - text: "The evaluation pattern for the summer semester comprises Mid-Semester Tests (MST), End-Semester Tests (EST), and Sessional assessments."
+    - text: "Summer semester evaluations include Mid-Semester Tests (MST),  End-Semester Tests (EST), and Sessional assessments."
 
 rules:
   - rule: Respond to a greeting
@@ -108,6 +163,25 @@ rules:
   - rule: Provide details about fees for improvement and backlog
     steps:
       - intent: inquire_about_fees_for_improvement_and_backlog
+      - action: utter_inquire_about_fees_for_improvement_and_backlog
+  # new rules
+  - rule: Respond to inquire_about_project_based_course_availability
+    steps:
+      - intent: inquire_about_project_based_course_availability_in_summer_semester
+      - action: utter_inquire_about_project_based_course_availability_in_summer_semester
+
+  - rule: Respond to inquire_about_X_grade_and_F_study_mode
+    steps:
+      - intent: inquire_about_X_grade_and_F_study_mode
+      - action: utter_inquire_about_X_grade_and_F_study_mode
+
+  - rule: Respond to inquire_about_evaluation_pattern_for_summer_semester
+    steps:
+      - intent: inquire_about_evaluation_pattern_for_summer_semester
+      - action: utter_inquire_about_evaluation_pattern_for_summer_semester
+  - rule: Respond to inquire_about_project_courses_and_fees
+    steps:
+      - intent: inquire_about_project_courses_and_fees
       - action: utter_inquire_about_fees_for_improvement_and_backlog
 
 session_config:
