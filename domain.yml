@@ -15,6 +15,9 @@ intents:
 - inquire_about_project_based_course_availability_in_summer_semester #new intents
 - inquire_about_evaluation_pattern_for_summer_semester #new intents
 - inquire_about_project_courses_and_fees #new intents to solve the issue
+- tenure_of_summer_term
+- registration_details
+- inquire_about_AUX_EST_registration_schedule
 entities:
 - grade
 - marks_total
@@ -31,6 +34,13 @@ entities:
 - restrictions
 - course_name # New entity for course names
 - study_mode # New entity for study modes (e.g., regular, self-study)
+- date_entity
+- duration_entity
+- registration_action_entity
+- registration_status_entity
+- registration_method_entity
+- information_action_entity
+- fee_entity
 slots:
   grade:
     type: text
@@ -156,79 +166,7 @@ responses:
     - text: "The evaluation pattern for the summer semester involves components such as Mid-Semester Tests (MST), End-Semester Tests (EST), and Sessional assessments."
     - text: "The evaluation pattern for the summer semester comprises Mid-Semester Tests (MST), End-Semester Tests (EST), and Sessional assessments."
     - text: "Summer semester evaluations include Mid-Semester Tests (MST),  End-Semester Tests (EST), and Sessional assessments."
-  # khushi new additions
-  utter_inquire_about_fees_for_auxiliary_exam:
-    - text: "The fees for the auxiliary examinations is Rs. 2000."
-    - text: "For the Auxiliary examination in summer semester, the fee is Rs. 2000."
-    - text: "You'll need to pay Rs. 2000 for the auxiliary examination."
-  utter_inquire_about_thesis_submission_fee_change:
-    - text: "The thesis submission fee for PG (M.E. / M.Tech. / MSc. / MA) has been proposed to get revised from Rs. 500 to Rs. 1000. If you have any further questions or need more details, please let me know."
-    - text: "The revised thesis submission fee for PG (M.E. / M.Tech. / MSc. / MA) programs is Rs. 1000, up from the previous Rs. 500. Feel free to ask if you have any more queries."
-    - text: "As per the latest proposal, the thesis submission fee for PG (M.E. / M.Tech. / MSc. / MA) is set to change from Rs. 500 to Rs. 1000. If you need additional information, please don't hesitate to ask."
-    - text: "The thesis submission fee for PG (M.E. / M.Tech. / MSc. / MA) students is undergoing a revision, with the proposed fee being Rs. 1000, up from the previous Rs. 500. Should you have any other questions, feel free to inquire."
-  utter_inquire_about_fee_refund_policy:
-    - text: "Fee is non-refundable once summer semester has started."
-    - text: "Please note that fees cannot be refunded once the summer semester has begun."
-    - text: "Refunds for fees are not possible once the summer semester is in progress."
-    - text: "Keep in mind that once the summer semester has started, fees are non-refundable."
-
-rules:
-  - rule: Respond to a greeting
-    steps:
-      - intent: greet
-      - action: utter_greet
-
-  - rule: Respond to a goodbye
-    steps:
-      - intent: goodbye
-      - action: utter_goodbye
-  - rule: Provide details about grade upgrades
-    steps:
-      - intent: inquire_about_grade_upgrade
-      - action: utter_inquire_about_grade_upgrade
-
-  - rule: Provide details about E grade self-study condition
-    steps:
-      - intent: inquire_about_E_grade_self_study_condition
-      - action: utter_E_grade_self_study_condition
-
-  - rule: Provide details about fees for improvement and backlog
-    steps:
-      - intent: inquire_about_fees_for_improvement_and_backlog
-      - action: utter_inquire_about_fees_for_improvement_and_backlog
-  # new rules
-  - rule: Respond to inquire_about_project_based_course_availability
-    steps:
-      - intent: inquire_about_project_based_course_availability_in_summer_semester
-      - action: utter_inquire_about_project_based_course_availability_in_summer_semester
-
-  - rule: Respond to inquire_about_X_grade_and_F_study_mode
-    steps:
-      - intent: inquire_about_X_grade_and_F_study_mode
-      - action: utter_inquire_about_X_grade_and_F_study_mode
-
-  - rule: Respond to inquire_about_evaluation_pattern_for_summer_semester
-    steps:
-      - intent: inquire_about_evaluation_pattern_for_summer_semester
-      - action: utter_inquire_about_evaluation_pattern_for_summer_semester
-  - rule: Respond to inquire_about_project_courses_and_fees
-    steps:
-      - intent: inquire_about_project_courses_and_fees
-      - action: utter_inquire_about_fees_for_improvement_and_backlog
-  - rule: Respond to inquire_about_fees_for_auxiliary_exam
-    steps:
-      - intent: inquire_about_fees_for_auxiliary_exam
-      - action: utter_inquire_about_fees_for_auxiliary_exam
-  - rule: Respond to inquire_about_fee_refund_policy
-    steps:
-      - intent: inquire_about_fee_refund_policy
-      - action: utter_inquire_about_fee_refund_policy
-  - rule: Respond to inquire_about_thesis_submission_fee_change
-    steps:
-      - intent: inquire_about_thesis_submission_fee_change
-      - action: utter_inquire_about_thesis_submission_fee_change
-
-  - text: For E grade students, if their marks are greater than or equal to 25, they can choose the self-study mode. If their marks are below 25, they must follow the regular study mode.
+  ##################
   utter_inquire_about_teacher_assignment_for_modes:
   - text: For subjects offered in both self-study and regular modes, a single faculty member is assigned to handle the course. The faculty member conducts Mid-Semester Tests (MST), End-Semester Tests (EST), and sessional evaluations as required by the course. The evaluation pattern and conduct remain the same for both study modes.
   - text: When a subject is available in both self-study and regular modes, it is taught by a single faculty member. This faculty member conducts Mid-Semester Tests (MST), End-Semester Tests (EST), and sessional evaluations for the course, following the same pattern for both study modes.
@@ -249,28 +187,47 @@ rules:
   - text: "It's important to note that if you have already improved your grade in a specific course, you cannot register for that same course again for further improvement. This policy is in place to ensure fairness and academic progress. If you have any other inquiries or would like more information on available options, please don't hesitate to ask."
   - text: "Once you have successfully improved your grade in a particular course, you are not allowed to register for the same course again for further improvement. However, there are alternative pathways like upgradation or exploring additional subjects. If you require more details or have additional questions, please feel free to ask."
   - text: "Please be aware that if you have improved your grade in a specific course, you are not permitted to register for that same course again for further improvement. This policy is designed to maintain academic fairness. If you have any other queries or need information on alternative options, don't hesitate to reach out."
+  # Responses for the tenure_of_summer_term intent
+  utter_tenure_of_summer_term:
+    - text: "The summer semester typically starts in [May](date_entity) and ends in [August](date_entity). It lasts for approximately [14 weeks](duration_entity)."
+    - text: "The summer term usually runs from [May](date_entity) to [August](date_entity), spanning a duration of [14 weeks](duration_entity)."
+    - text: "In general, the summer semester starts in [May](date_entity) and concludes in [August](date_entity), lasting for approximately [14 weeks](duration_entity)."
+    - text: "The summer session typically begins in [May](date_entity) and concludes in [August](date_entity), with a duration of [14 weeks](duration_entity)."
 
-rules:
-- rule: Respond to a greeting
-  steps:
-  - intent: greet
-  - action: utter_greet
-- rule: Respond to a goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-- rule: Provide details about grade upgrades
-  steps:
-  - intent: inquire_about_grade_upgrade
-  - action: utter_inquire_about_grade_upgrade
-- rule: Provide details about E grade self-study condition
-  steps:
-  - intent: inquire_about_E_grade_self_study_condition
-  - action: utter_E_grade_self_study_condition
-- rule: Provide details about fees for improvement and backlog
-  steps:
-  - intent: inquire_about_fees_for_improvement_and_backlog
-  - action: utter_inquire_about_fees_for_improvement_and_backlog
+  # Responses for the registration_details intent
+  utter_registration_details:
+    - text: "You can register for the summer semester online through our website. The registration period usually opens in [March](date_entity) and closes in [April](date_entity). Make sure to complete your registration before the [deadline](date_entity). Late registration may incur a [fee](fee_entity)."
+    - text: "To register for the summer semester, please visit our website. The registration period typically starts in [March](date_entity) and ends in [April](date_entity). Be mindful of the [registration deadline](date_entity). Late registration may result in a [fee](fee_entity)."
+    - text: "Summer semester registration can be done online via our website. Registration usually commences in [March](date_entity) and concludes in [April](date_entity). Ensure you register before the [deadline](date_entity) to avoid any late [registration fees](fee_entity)."
+    - text: "The summer semester registration process is conducted online. It opens around [March](date_entity) and closes in [April](date_entity). Please register within the specified timeframe to avoid any [late registration charges](fee_entity)."
+
+  # Responses for the inquire_about_AUX_EST_registration_schedule intent
+  utter_AUX_EST_registration_schedule:
+    - text: "AUX EST registration typically begins in [January](date_entity) and concludes in [February](date_entity). You can register online or find more information on our website. Late registration may be subject to a [fee](fee_entity)."
+    - text: "For AUX EST, registration usually starts in [January](date_entity) and ends in [February](date_entity). You have the option to register online, and additional information can be found on our website. Keep in mind that late registration may incur a [fee](fee_entity)."
+    - text: "To register for AUX EST, the registration period typically opens in [January](date_entity) and closes in [February](date_entity). You can register online, and detailed information is available on our website. Please note that late registration may involve a [fee](fee_entity)."
+    - text: "AUX EST registration begins around [January](date_entity) and ends in [February](date_entity). You can register online or access registration-related information on our website. Be aware that late registration may result in a [fee](fee_entity)."
+# rules:
+# - rule: Respond to a greeting
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+# - rule: Respond to a goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye
+# - rule: Provide details about grade upgrades
+#   steps:
+#   - intent: inquire_about_grade_upgrade
+#   - action: utter_inquire_about_grade_upgrade
+# - rule: Provide details about E grade self-study condition
+#   steps:
+#   - intent: inquire_about_E_grade_self_study_condition
+#   - action: utter_E_grade_self_study_condition
+# - rule: Provide details about fees for improvement and backlog
+#   steps:
+#   - intent: inquire_about_fees_for_improvement_and_backlog
+#   - action: utter_inquire_about_fees_for_improvement_and_backlog
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
