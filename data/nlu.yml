@@ -420,7 +420,131 @@ nlu:
       - Share details about the study resources available for students with [X grade](current_grade:X) in the [summer semester](semester:summer).
       - Are there opportunities for students with [X grade](current_grade:X) to participate in special programs during the [summer semester](semester:summer)?
       - How does the study mode change for students with [X grade](current_grade:X) in the supplementary examination in the [summer semester](semester:summer)?
-
+  - intent: inquire_about_fees_for_auxiliary_exam
+    examples: |
+      - What are the [fees](fees:fees) for the [auxiliary examination](exam_type:auxiliary)?
+      - Can you tell me about the [cost](fees:fees) of the [auxiliary exam](exam_type:auxiliary)?
+      - How much do I need to pay for the [auxiliary exam](exam_type:auxiliary)?
+      - Explain the [fee structure](fees:fees) for the [auxiliary examination](exam_type:auxiliary).
+      - Are there any [charges](fees:fees) associated with the [auxiliary examination](exam_type:auxiliary)?
+      - Tell me about the [cost](fees:fees) of appearing in [auxiliary exams](exam_type:auxiliary).
+      - What is the [amount](fees:fees) required for the [auxiliary exam](exam_type:auxiliary)?
+      - Are the [fees](fees:fees) for the [auxiliary examination](exam_type:auxiliary) different from regular exams?
+      - How can I pay for the [auxiliary exam](exam_type:auxiliary)?
+      - Tell me about the [payment](fees:fees) process for [auxiliary exams](exam_type:auxiliary).
+      - Is there a [discount](fees:fees) available for the [auxiliary examination](exam_type:auxiliary)?
+      - What is the [refund policy](fees:fees) for the [auxiliary exam](exam_type:auxiliary)?
+      - Can you provide information on [financial requirements](fees:fees) for the [auxiliary examination](exam_type:auxiliary)?
+      - Are there any [penalties](fees:fees) for late payment of [auxiliary exam fees](exam_type:auxiliary)?
+      - Tell me about the [due date](fees:fees) for the [auxiliary exam fees](exam_type:auxiliary).
+      - How can I check the [fee amount](fees:fees) for the [auxiliary examination](exam_type:auxiliary)?
+      - Is there an [installment](fees:fees) option for [auxiliary exam fees](exam_type:auxiliary)?
+      - What happens if I don't pay the [auxiliary exam fees](exam_type:auxiliary) on time?
+      - Are there any [consequences](fees:fees) for non-payment of [auxiliary exam fees](exam_type:auxiliary)?
+      - Tell me about the [accepted payment methods](fees:fees) for the [auxiliary examination](exam_type:auxiliary).
+      - Do I need to pay for the [auxiliary exam](exam_type:auxiliary) before scheduling it?
+      - How do I request a [fee waiver](fees:fees) for the [auxiliary exam](exam_type:auxiliary)?
+      - Tell me about any [additional costs](fees:fees) associated with the [auxiliary examination](exam_type:auxiliary).
+      - Can I get a [receipt](fees:fees) for my [auxiliary exam fee](exam_type:auxiliary) payment?
+      - Is there a [separate fee](fees:fees) for EST exams in the [auxiliary examination](exam_type:auxiliary)?
+      - What is the [due date](fees:fees) for paying the [auxiliary exam fees](exam_type:auxiliary)?
+      - Tell me about the [penalty](fees:fees) for late payment of [auxiliary exam fees](exam_type:auxiliary).
+      - Are there any [scholarships](fees:fees) available for [auxiliary exam fees](exam_type:auxiliary)?
+      - Can I pay the [auxiliary exam fees](fees:fees) online?
+      - Is there an [application fee](fees:fees) for the [auxiliary examination](exam_type:auxiliary)?
+      - Tell me about the [due date](fees:fees) for the [auxiliary exam fee](exam_type:auxiliary) for January.
+      - Do I need to pay the [auxiliary exam fees](fees:fees) if I have a scholarship?
+      - Are there any [late fee charges](fees:fees) for the [auxiliary exam](exam_type:auxiliary)?
+      - What is the [fee refund policy](fees:fees) for the [auxiliary examination](exam_type:auxiliary)?
+      - Tell me about the [deadline](fees:fees) for [fee payment](fees:fees) for the [auxiliary exam](exam_type:auxiliary).
+      - Can I get a [receipt](fees:fees) for my [auxiliary exam fee](exam_type:auxiliary) payment online?  
+  - intent: inquire_about_thesis_submission_fee_change
+    examples: |
+      - Has the [thesis submission fee](fee_type:thesis_submission_fee) changed?
+      - What is the new [thesis submission fee](fee_type:thesis_submission_fee)?
+      - Tell me about the recent [change](action:fee_change) in [thesis submission fee](fee_type:thesis_submission_fee).
+      - Are there any updates regarding the [fee](fee_type:thesis_submission_fee) for thesis submission?
+      - How much do I need to pay for [thesis submission](fee_type:thesis_submission_fee) now?
+      - Explain the [revision](action:fee_change) in [thesis submission fee](fee_type:thesis_submission_fee).
+      - Is there any information about the [revised fee](fee_type:thesis_submission_fee) for thesis submission?
+      - Can you provide details about the [current fee](fee_type:thesis_submission_fee) for thesis submission?
+      - Tell me about the changes in [thesis submission fee](fee_type:thesis_submission_fee).
+      - Has the [fee](fee_type:thesis_submission_fee) for thesis submission been updated?
+      - What is the [new cost](fee_type:thesis_submission_fee) for thesis submission?
+      - Provide information about the [recent change](action:fee_change) in [thesis submission fee](fee_type:thesis_submission_fee).
+      - How has the [thesis submission fee](fee_type:thesis_submission_fee) been modified?
+      - Are there any alterations in the [fee](fee_type:thesis_submission_fee) for thesis submission?
+      - Tell me the [revised fee](fee_type:thesis_submission_fee) for thesis submission.
+      - Is there any [modification](action:fee_change) in the [thesis submission fee](fee_type:thesis_submission_fee)?
+      - What is the [adjusted cost](fee_type:thesis_submission_fee) for thesis submission?
+      - Has there been a [fee change](action:fee_change) for thesis submission?
+      - Explain the [alteration](action:fee_change) in [thesis submission fee](fee_type:thesis_submission_fee).
+      - Can you provide details about the [recent fee change](action:fee_change) for thesis submission?
+      - How has the [cost](fee_type:thesis_submission_fee) of thesis submission been [revised](action:fee_change)?
+      - Tell me about the [modification](action:fee_change) in the [fee](fee_type:thesis_submission_fee) for thesis submission.
+      - Is there any information on the [revised fee](fee_type:thesis_submission_fee) for thesis submission?
+      - Has there been any change in the [fee structure](fee_type:thesis_submission_fee) for thesis submission?
+      - What is the [updated cost](fee_type:thesis_submission_fee) for thesis submission?
+      - Provide details about the [latest update](action:fee_change) in [thesis submission fee](fee_type:thesis_submission_fee).
+      - How has the [fee](fee_type:thesis_submission_fee) for thesis submission been [altered](action:fee_change)?
+      - Tell me the [current fee](fee_type:thesis_submission_fee) for thesis submission.
+      - Is there any [modification](action:fee_change) in the [thesis submission fee](fee_type:thesis_submission_fee)?
+      - What is the [revised cost](fee_type:thesis_submission_fee) for thesis submission?
+      - Give me information about the [recent alteration](action:fee_change) in [thesis submission fee](fee_type:thesis_submission_fee).
+      - What is the [thesis submission fee](fee_type:thesis_submission_fee)?
+      - Can you tell me the [fee](fee_type:thesis_submission_fee) for thesis submission?
+      - How much is the [current thesis submission fee](fee_type:thesis_submission_fee)?
+      - What does the [thesis submission fee](fee_type:thesis_submission_fee) amount to?
+      - I'd like to know the [thesis submission fee](fee_type:thesis_submission_fee).
+      - What's the cost of [thesis submission](fee_type:thesis_submission_fee) right now?
+      - How can I find out the [thesis submission fee](fee_type:thesis_submission_fee)?
+      - Could you please provide the [thesis submission fee](fee_type:thesis_submission_fee)?
+      - Tell me about the [fee](fee_type:thesis_submission_fee) required for thesis submission.
+      - What's the [fee](fee_type:thesis_submission_fee) associated with thesis submission?
+  - intent: inquire_about_fee_refund_policy
+    examples: |
+      - What is the [fee refund policy](policy_type:fee refund) for the summer semester?
+      - Can I get a [refund](action:refund) for my fees in the [summer semester](semester:summer)?
+      - Tell me about the [refund process](action:refund) for the auxiliary examination fees.
+      - Is there a [refund](action:refund) available for grade improvement fees?
+      - How can I apply for a [fee refund](action:refund)?
+      - What are the conditions for [fee refunds](action:refund)?
+      - Explain the [fee refund](action:refund) rules for the regular mode.
+      - Can I get a [refund](action:refund) if I withdraw from a course in summer?
+      - What is the [policy](policy_type:fee refund) for refunding fees for project-based courses?
+      - Tell me about the [refundable amount](amount:refundable amount) for auxiliary exams.
+      - How do I request a [fee refund](action:refund) for my backlog cases?
+      - Are there any [exceptions](exceptions:exceptions) to the fee refund policy?
+      - Can I apply for a [refund](action:refund) if I'm not satisfied with my self-study mode?
+      - What is the deadline for applying for a [fee refund](action:refund)?
+      - Is the [refund](action:refund) process different for thesis submission fees?
+      - Tell me about the [refundable amount](amount:refundable amount) for the summer semester fees.
+      - Are there any [penalties](penalties:penalties) for requesting a refund?
+      - Can I get a [refund](action:refund) for my auxiliary examination fees in January?
+      - What is the [policy](policy_type:fee refund) for refunding fees for grade improvement?
+      - Explain the [refund process](action:refund) for the thesis submission fees for PG.
+      - Is there a [fee refund](action:refund) available for students with E grades?
+      - Tell me about the [refundable amount](amount:refundable amount) for the summer semester improvement fees.
+      - How long does it take to process a [fee refund](action:refund)?
+      - Can I get a [refund](action:refund) if I have upgraded my grades?
+      - What is the procedure for requesting a [refund](action:refund) for the auxiliary examination in January?
+      - Are there any [restrictions](restrictions:restrictions) on fee refunds for project-based courses?
+      - Can I apply for a [refund](action:refund) if I have upgraded my grades in summer?
+      - Tell me about the [refundable amount](amount:refundable amount) for the thesis submission fees.
+      - How can I check the status of my [fee refund](action:refund) request?
+      - Is the [refund](action:refund) process different for self-study and regular mode students?
+      - What is the [fee refund](action:refund) policy for students who have improved their grades?
+      - Explain the [refund process](action:refund) for the auxiliary examination in July.
+      - Are there any [penalties](penalties:penalties) for late fee refund requests?
+      - Can I request a [refund](action:refund) if I haven't started the summer semester?
+      - Tell me about the [refundable amount](amount:refundable amount) for the thesis submission fees for M.E.
+      - Is there a [refund](action:refund) available for students with X grades?
+      - How do I apply for a [fee refund](action:refund) for improvement fees in summer?
+      - What happens if I miss the [refund](action:refund) application deadline?
+      - Can I get a [refund](action:refund) for my backlog cases in summer?
+      - Explain the [refund process](action:refund) for the auxiliary examination in January.
+      - Are there any [restrictions](restrictions:restrictions) on fee refunds for thesis submission fees?
+    
   # new synonyms
   - synonym: course_name
     examples: |
