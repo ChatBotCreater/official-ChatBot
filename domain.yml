@@ -1,189 +1,172 @@
-version: "3.1"
-
+version: '3.1'
 intents:
-  - greet
-  - goodbye
-  - inquire_about_grade_upgrade
-  - inquire_about_E_grade_self_study_condition
-  - inquire_about_fees_for_improvement_and_backlog
-  - inquire_about_auxiliary_exam_grade_limit
-  - inquire_about_E_grade_study_mode_based_on_marks
-  - inquire_about_X_grade_and_F_study_mode #new intents
-  - inquire_about_project_based_course_availability_in_summer_semester #new intents
-  - inquire_about_evaluation_pattern_for_summer_semester #new intents
-  - inquire_about_project_courses_and_fees #new intents to solve the issue
+- goodbye
+- greet
+- inquire_about_E_grade_self_study_condition
+- inquire_about_E_grade_study_mode_based_on_marks
+- inquire_about_auxiliary_exam_grade_limit
+- inquire_about_fee_refund_policy
+- inquire_about_fees_for_improvement_and_backlog
+- inquire_about_grade_upgrade
+- inquire_about_teacher_assignment_for_modes
+- inquire_about_subject_limit_per_mode
+- inquire_about_course_re_enrollment_after_improvement
 entities:
-  - grade
-  - marks_total
-  - marks_cutoff
-  - marks_range
-  - exam:type
-  - course_name # New entity for course names
-  - semester # New entity for semester terms
-  - study_mode # New entity for study modes (e.g., regular, self-study)
-  - exam_type # New entity for examination types (e.g., MST, EST)
-  - action # New entity for actions (e.g., grade_improvement, grade_upgradation)
-
+- grade
+- marks_total
+- marks_cutoff
+- marks_range
+- exam:type
+- marks:float
+- policy_type
+- action
+- semester
+- amount
+- exceptions
+- penalties
+- restrictions
 slots:
   grade:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: grade
-
+    - type: from_entity
+      entity: grade
   marks_total:
     type: float
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: marks_total
-
+    - type: from_entity
+      entity: marks_total
   marks_cutoff:
     type: float
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: marks_cutoff
-
+    - type: from_entity
+      entity: marks_cutoff
   marks_range:
     type: list
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: marks_range
-
+    - type: from_entity
+      entity: marks_range
+  policy_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: policy_type
   exam:type:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: exam:type
-
-  course_name: # New slot for course names
+    - type: from_entity
+      entity: exam:type
+  action:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: course_name
-  semester: # New slot for semester terms
+    - type: from_entity
+      entity: action
+  semester:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: semester
-  study_mode: # New slot for study modes
+    - type: from_entity
+      entity: semester
+  amount:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: study_mode
-  exam_type: # New slot for examination types
+    - type: from_entity
+      entity: amount
+  exceptions:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: exam_type
-  action: # New slot for actions
+    - type: from_entity
+      entity: exceptions
+  penalties:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: action
-
+    - type: from_entity
+      entity: penalties
+  restrictions:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: restrictions
 responses:
   utter_greet:
-    - text: "Hey! How can I assist you today?"
-
+  - text: Hey! How can I assist you today?
   utter_goodbye:
-    - text: "Goodbye! Feel free to ask if you have more questions."
-
+  - text: Goodbye! Feel free to ask if you have more questions.
   utter_inquire_about_grade_upgrade:
-    - text: "Sure! Students with B / B- / C / C- grades are eligible for grade upgrades."
-    - text: "Of course! Grade improvement is available for students with B / B- / C / C- grades."
-    - text: "Certainly! You can opt for grade upgrades if you have B / B- / C / C- grades."
-    - text: "Absolutely! If you have B / B- / C / C- grades, you can improve them through upgrades."
-
+  - text: Sure! Students with B / B- / C / C- grades are eligible for grade upgrades.
+  - text: Of course! Grade improvement is available for students with B / B- / C / C- grades.
+  - text: Certainly! You can opt for grade upgrades if you have B / B- / C / C- grades.
+  - text: Absolutely! If you have B / B- / C / C- grades, you can improve them through upgrades.
   utter_E_grade_self_study_condition:
-    - text: "Students with an E grade can choose self-study mode if they score 25 marks or more out of 100."
-    - text: "For E grade students, self-study is an option if they achieve a minimum of 25 marks out of 100."
-    - text: "E grade students can select self-study mode if they have 25 marks or higher out of 100."
-    - text: "If you've scored an E grade, you're eligible for self-study if you achieve at least 25 marks out of 100."
-
+  - text: Students with an E grade can choose self-study mode if they score 25 marks or more out of 100.
+  - text: For E grade students, self-study is an option if they achieve a minimum of 25 marks out of 100.
+  - text: E grade students can select self-study mode if they have 25 marks or higher out of 100.
+  - text: If you've scored an E grade, you're eligible for self-study if you achieve at least 25 marks out of 100.
   utter_inquire_about_fees_for_improvement_and_backlog:
-    - text: "Certainly! The fees for grade improvement in summer term is Rs. 15,000."
-    - text: "The fees for summer term is Rs. 15,000."
-    - text: "For grade improvement, you'll need to pay Rs. 15,000 if you wish to opt it in summer semester."
-    - text: "Sure thing! The fees for backlog exams vary based on the number of subjects but for the single subject it is around 15,000 for grade improvement and 2000 for auxiliary."
-    - text: "The charges for backlog exams is 15000 and for auxiliary is around 2000"
-
+  - text: Absolutely! Grade improvement in summer? That's Rs. 15,000. Auxiliary exam? Rs. 2,000 (was Rs. 1,500). Oh, and the PG thesis fee? It's proposed to jump from Rs. 500 to Rs. 1,000. Need any more details?
+  - text: "Here's a quick rundown: Summer grade improvement is Rs. 15,000. Auxiliary exam? Rs. 2,000 (down from Rs. 1,500). PG thesis submission is set to be Rs. 1,000, up from Rs. 500. Anything else you're curious about?"
+  - text: Let's break it down! Rs. 15,000 for summer grade improvement, Rs. 2,000 for the auxiliary (previously Rs. 1,500). And the PG thesis? A proposed hike to Rs. 1,000 from Rs. 500. What else can I assist you with?
+  - text: "In a nutshell: Summer term grade boost? Rs. 15,000. Auxiliary exam? A cool Rs. 2,000 (originally Rs. 1,500). As for PG thesis fees, it's looking to be Rs. 1,000, up from Rs. 500. Anything else on your mind?"
   utter_inquire_about_auxiliary_exam_grade_limit:
-    - text: "For students with an E grade, the maximum grade achievable in the auxiliary exam is a C grade. They can improve up to a maximum of a C grade in the auxiliary examination."
-
+  - text: For students with an E grade, the maximum grade achievable in the auxiliary exam is a C grade. They can improve up to a maximum of a C grade in the auxiliary examination.
   utter_inquire_about_E_grade_study_mode_based_on_marks:
-    - text: "For E grade students, if their marks are greater than or equal to 25, they can choose the self-study mode. If their marks are below 25, they must follow the regular study mode."
-  # new responses
-  utter_inquire_about_project_based_course_availability_in_summer_semester:
-    - text: "Project-based courses like Engineering Design-1, Engineering Design-2, Capstone Project, etc., are not offered in self-study mode. They are available only in regular mode."
-    - text: "In the summer semester, project-based courses such as Engineering Design-1 and Capstone Project are usually conducted in regular mode. Self-study mode is not an option for these courses."
-    - text: "For the summer semester, project-based courses like Engineering Design-1 and Capstone Project follow a regular mode of study. Self-study is not applicable to these courses."
-    - text: "Regular mode is the standard mode for project-based courses like Engineering Design-1, Engineering Design-2, and Capstone Project during the summer semester. Self-study mode is not offered."
-
-  utter_inquire_about_X_grade_and_F_study_mode:
-    - text: "In the summer semester, students with X or F grades have the opportunity to improve their grades. However, for those with F grades, the study mode remains will only be in regular mode"
-    - text: "Grade improvement is only available in regular mode for students who receive an X or an F."
-    - text: "Students with grades X or F are only eligible for regular mode for grade improvement in summer semester."
-
-  utter_inquire_about_evaluation_pattern_for_summer_semester:
-    - text: "The evaluation pattern for the summer semester involves components such as Mid-Semester Tests (MST), End-Semester Tests (EST), and Sessional assessments."
-    - text: "The evaluation pattern for the summer semester comprises Mid-Semester Tests (MST), End-Semester Tests (EST), and Sessional assessments."
-    - text: "Summer semester evaluations include Mid-Semester Tests (MST),  End-Semester Tests (EST), and Sessional assessments."
+  - text: For E grade students, if their marks are greater than or equal to 25, they can choose the self-study mode. If their marks are below 25, they must follow the regular study mode.
+  utter_inquire_about_teacher_assignment_for_modes:
+  - text: For subjects offered in both self-study and regular modes, a single faculty member is assigned to handle the course. The faculty member conducts Mid-Semester Tests (MST), End-Semester Tests (EST), and sessional evaluations as required by the course. The evaluation pattern and conduct remain the same for both study modes.
+  - text: When a subject is available in both self-study and regular modes, it is taught by a single faculty member. This faculty member conducts Mid-Semester Tests (MST), End-Semester Tests (EST), and sessional evaluations for the course, following the same pattern for both study modes.
+  - text: In the case of subjects running in both self-study and regular modes, a single faculty member is assigned. This faculty member is responsible for conducting Mid-Semester Tests (MST), End-Semester Tests (EST), and sessional evaluations as needed. The evaluation process remains consistent for both study modes.
+  - text: For courses offered in both self-study and regular modes, a single faculty member is designated. This faculty member conducts Mid-Semester Tests (MST), End-Semester Tests (EST), and sessional assessments, following the established procedure for both study modes.
+  utter_inquire_about_fee_refund_policy:
+  - text: Fee is non-refundable once summer semester has started.
+  - text: Please note that fees cannot be refunded once the summer semester has begun.
+  - text: Refunds for fees are not possible once the summer semester is in progress.
+  - text: Keep in mind that once the summer semester has started, fees are non-refundable.
+  utter_respond_subject_limit_self_study:
+  - text: "In self-study mode, you can enroll in a maximum of 3 subjects."
+  - text: "Self-study mode allows you to enroll in a maximum of 3 subjects."
+  - text: "You can choose up to 3 subjects for self-study mode."
+  - text: "The subject enrollment limit for self-study mode is 3 subjects."
+  utter_respond_course_re_enrollment_after_improvement:
+  - text: "I'm sorry, but once you have improved your grade in a particular course, you cannot register for the same course again for further improvement. However, you can explore other options, such as upgradation or pursuing additional subjects. If you have any more questions or need further clarification, feel free to ask."
+  - text: "It's important to note that if you have already improved your grade in a specific course, you cannot register for that same course again for further improvement. This policy is in place to ensure fairness and academic progress. If you have any other inquiries or would like more information on available options, please don't hesitate to ask."
+  - text: "Once you have successfully improved your grade in a particular course, you are not allowed to register for the same course again for further improvement. However, there are alternative pathways like upgradation or exploring additional subjects. If you require more details or have additional questions, please feel free to ask."
+  - text: "Please be aware that if you have improved your grade in a specific course, you are not permitted to register for that same course again for further improvement. This policy is designed to maintain academic fairness. If you have any other queries or need information on alternative options, don't hesitate to reach out."
 
 rules:
-  - rule: Respond to a greeting
-    steps:
-      - intent: greet
-      - action: utter_greet
-
-  - rule: Respond to a goodbye
-    steps:
-      - intent: goodbye
-      - action: utter_goodbye
-
-  - rule: Provide details about grade upgrades
-    steps:
-      - intent: inquire_about_grade_upgrade
-      - action: utter_inquire_about_grade_upgrade
-
-  - rule: Provide details about E grade self-study condition
-    steps:
-      - intent: inquire_about_E_grade_self_study_condition
-      - action: utter_E_grade_self_study_condition
-
-  - rule: Provide details about fees for improvement and backlog
-    steps:
-      - intent: inquire_about_fees_for_improvement_and_backlog
-      - action: utter_inquire_about_fees_for_improvement_and_backlog
-  # new rules
-  - rule: Respond to inquire_about_project_based_course_availability
-    steps:
-      - intent: inquire_about_project_based_course_availability_in_summer_semester
-      - action: utter_inquire_about_project_based_course_availability_in_summer_semester
-
-  - rule: Respond to inquire_about_X_grade_and_F_study_mode
-    steps:
-      - intent: inquire_about_X_grade_and_F_study_mode
-      - action: utter_inquire_about_X_grade_and_F_study_mode
-
-  - rule: Respond to inquire_about_evaluation_pattern_for_summer_semester
-    steps:
-      - intent: inquire_about_evaluation_pattern_for_summer_semester
-      - action: utter_inquire_about_evaluation_pattern_for_summer_semester
-  - rule: Respond to inquire_about_project_courses_and_fees
-    steps:
-      - intent: inquire_about_project_courses_and_fees
-      - action: utter_inquire_about_fees_for_improvement_and_backlog
-
+- rule: Respond to a greeting
+  steps:
+  - intent: greet
+  - action: utter_greet
+- rule: Respond to a goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+- rule: Provide details about grade upgrades
+  steps:
+  - intent: inquire_about_grade_upgrade
+  - action: utter_inquire_about_grade_upgrade
+- rule: Provide details about E grade self-study condition
+  steps:
+  - intent: inquire_about_E_grade_self_study_condition
+  - action: utter_E_grade_self_study_condition
+- rule: Provide details about fees for improvement and backlog
+  steps:
+  - intent: inquire_about_fees_for_improvement_and_backlog
+  - action: utter_inquire_about_fees_for_improvement_and_backlog
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+actions:
+- utter_greet
+- utter_inquire_about_fees_for_improvement_and_backlog
