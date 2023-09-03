@@ -53,6 +53,7 @@ rules:
     steps:
       - intent: inquire_about_project_courses_and_fees
       - action: utter_inquire_about_fees_for_improvement_and_backlog
+      
   - rule: Respond to inquire_about_fees_for_auxiliary_exam
     steps:
       - intent: inquire_about_fees_for_auxiliary_exam

@@ -420,6 +420,7 @@ nlu:
       - Share details about the study resources available for students with [X grade](current_grade:X) in the [summer semester](semester:summer).
       - Are there opportunities for students with [X grade](current_grade:X) to participate in special programs during the [summer semester](semester:summer)?
       - How does the study mode change for students with [X grade](current_grade:X) in the supplementary examination in the [summer semester](semester:summer)?
+
   - intent: inquire_about_fees_for_auxiliary_exam
     examples: |
       - What are the [fees](fees:fees) for the [auxiliary examination](exam_type:auxiliary)?
