@@ -30,29 +30,33 @@ rules:
     steps:
       - intent: inquire_about_auxiliary_exam_grade_limit
       - action: utter_inquire_about_auxiliary_exam_grade_limit
+
   - rule: Respond to inquiry about E grade study mode based on marks
     steps:
       - intent: inquire_about_E_grade_study_mode_based_on_marks
-      - action: utter_inquire_about_E_grade_study_mode_based_on_marks
-  # new rules
-  - rule: Respond to inquire_about_project_based_course_availability
+      - action: utter_inquire_about_E_grade_study_mode_based_on_marks  
+  
+  - rule: Respond to inquiry about teacher assignment for study modes
     steps:
-      - intent: inquire_about_project_based_course_availability_in_summer_semester
-      - action: utter_inquire_about_project_based_course_availability_in_summer_semester
+      - intent: inquire_about_teacher_assignment_for_modes
+      - action: utter_inquire_about_teacher_assignment_for_modes
+  
+  - rule: Respond to inquire_about_fee_refund_policy
+    steps:
+      - intent: inquire_about_fee_refund_policy
+      - action: utter_inquire_about_fee_refund_policy
 
-  - rule: Respond to inquire_about_X_grade_and_F_study_mode
-    steps:
-      - intent: inquire_about_X_grade_and_F_study_mode
-      - action: utter_inquire_about_X_grade_and_F_study_mode
 
-  - rule: Respond to inquire_about_evaluation_pattern_for_summer_semester
+  - rule: Respond to subject enrollment limits in self-study mode
     steps:
-      - intent: inquire_about_evaluation_pattern_for_summer_semester
-      - action: utter_inquire_about_evaluation_pattern_for_summer_semester
-  - rule: Respond to inquire_about_project_courses_and_fees
+      - intent: inquire_about_subject_limit_per_mode
+      - action: utter_respond_subject_limit_self_study
+
+  - rule: Respond to course re-enrollment after grade improvement
     steps:
-      - intent: inquire_about_project_courses_and_fees
-      - action: utter_inquire_about_fees_for_improvement_and_backlog
+      - intent: inquire_about_course_re_enrollment_after_improvement
+      - action: utter_respond_course_re_enrollment_after_improvement
+      
       
   - rule: Respond to inquire_about_fees_for_auxiliary_exam
     steps:
@@ -64,5 +68,5 @@ rules:
       - action: utter_inquire_about_fee_refund_policy
   - rule: Respond to inquire_about_thesis_submission_fee_change
     steps:
-      - intent: inquire_about_thesis_submission_fee_change
-      - action: utter_inquire_about_thesis_submission_fee_change
+      - intent: inquire_about_project_courses_and_fees
+      - action: utter_inquire_about_fees_for_improvement_and_backlog
