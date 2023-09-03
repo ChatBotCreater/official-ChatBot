@@ -12,6 +12,9 @@ intents:
   - inquire_about_project_based_course_availability_in_summer_semester #new intents
   - inquire_about_evaluation_pattern_for_summer_semester #new intents
   - inquire_about_project_courses_and_fees #new intents to solve the issue
+  - inquire_about_fees_for_auxiliary_exam
+  - inquire_about_thesis_submission_fee_change
+  - inquire_about_fee_refund_policy
 entities:
   - grade
   - marks_total
@@ -23,6 +26,8 @@ entities:
   - study_mode # New entity for study modes (e.g., regular, self-study)
   - exam_type # New entity for examination types (e.g., MST, EST)
   - action # New entity for actions (e.g., grade_improvement, grade_upgradation)
+  - fees    
+  - fee_type
 
 slots:
   grade:
@@ -90,6 +95,20 @@ slots:
     mappings:
       - type: from_entity
         entity: action
+  fees:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: fees
+  fee_type:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: fee_type
+
+
 
 responses:
   utter_greet:
@@ -138,6 +157,21 @@ responses:
     - text: "The evaluation pattern for the summer semester involves components such as Mid-Semester Tests (MST), End-Semester Tests (EST), and Sessional assessments."
     - text: "The evaluation pattern for the summer semester comprises Mid-Semester Tests (MST), End-Semester Tests (EST), and Sessional assessments."
     - text: "Summer semester evaluations include Mid-Semester Tests (MST),  End-Semester Tests (EST), and Sessional assessments."
+  # khushi new additions
+  utter_inquire_about_fees_for_auxiliary_exam:
+    - text: "The fees for the auxiliary examinations is Rs. 2000."
+    - text: "For the Auxiliary examination in summer semester, the fee is Rs. 2000."
+    - text: "You'll need to pay Rs. 2000 for the auxiliary examination."
+  utter_inquire_about_thesis_submission_fee_change:
+    - text: "The thesis submission fee for PG (M.E. / M.Tech. / MSc. / MA) has been proposed to get revised from Rs. 500 to Rs. 1000. If you have any further questions or need more details, please let me know."
+    - text: "The revised thesis submission fee for PG (M.E. / M.Tech. / MSc. / MA) programs is Rs. 1000, up from the previous Rs. 500. Feel free to ask if you have any more queries."
+    - text: "As per the latest proposal, the thesis submission fee for PG (M.E. / M.Tech. / MSc. / MA) is set to change from Rs. 500 to Rs. 1000. If you need additional information, please don't hesitate to ask."
+    - text: "The thesis submission fee for PG (M.E. / M.Tech. / MSc. / MA) students is undergoing a revision, with the proposed fee being Rs. 1000, up from the previous Rs. 500. Should you have any other questions, feel free to inquire."
+  utter_inquire_about_fee_refund_policy:
+    - text: "Fee is non-refundable once summer semester has started."
+    - text: "Please note that fees cannot be refunded once the summer semester has begun."
+    - text: "Refunds for fees are not possible once the summer semester is in progress."
+    - text: "Keep in mind that once the summer semester has started, fees are non-refundable."
 
 rules:
   - rule: Respond to a greeting
@@ -149,7 +183,6 @@ rules:
     steps:
       - intent: goodbye
       - action: utter_goodbye
-
   - rule: Provide details about grade upgrades
     steps:
       - intent: inquire_about_grade_upgrade
@@ -183,6 +216,18 @@ rules:
     steps:
       - intent: inquire_about_project_courses_and_fees
       - action: utter_inquire_about_fees_for_improvement_and_backlog
+  - rule: Respond to inquire_about_fees_for_auxiliary_exam
+    steps:
+      - intent: inquire_about_fees_for_auxiliary_exam
+      - action: utter_inquire_about_fees_for_auxiliary_exam
+  - rule: Respond to inquire_about_fee_refund_policy
+    steps:
+      - intent: inquire_about_fee_refund_policy
+      - action: utter_inquire_about_fee_refund_policy
+  - rule: Respond to inquire_about_thesis_submission_fee_change
+    steps:
+      - intent: inquire_about_thesis_submission_fee_change
+      - action: utter_inquire_about_thesis_submission_fee_change
 
 session_config:
   session_expiration_time: 60

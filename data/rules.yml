@@ -53,3 +53,16 @@ rules:
     steps:
       - intent: inquire_about_project_courses_and_fees
       - action: utter_inquire_about_fees_for_improvement_and_backlog
+      
+  - rule: Respond to inquire_about_fees_for_auxiliary_exam
+    steps:
+      - intent: inquire_about_fees_for_auxiliary_exam
+      - action: utter_inquire_about_fees_for_auxiliary_exam
+  - rule: Respond to inquire_about_fee_refund_policy
+    steps:
+      - intent: inquire_about_fee_refund_policy
+      - action: utter_inquire_about_fee_refund_policy
+  - rule: Respond to inquire_about_thesis_submission_fee_change
+    steps:
+      - intent: inquire_about_thesis_submission_fee_change
+      - action: utter_inquire_about_thesis_submission_fee_change
